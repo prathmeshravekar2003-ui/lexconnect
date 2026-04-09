@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #f0f7ff;
+  --color-primary-100: #e0effe;
+  --color-primary-200: #bae0fd;
+  --color-primary-300: #7cc8fb;
+  --color-primary-400: #38abf7;
+  --color-primary-500: #0e8ce4;
+  --color-primary-600: #026fc5;
+  --color-primary-700: #0358a0;
+  --color-primary-800: #074b83;
+  --color-primary-900: #0c3f6e;
+  --color-primary-950: #082849;
+
+  --color-accent-50: #fff1f2;
+  --color-accent-100: #ffe4e6;
+  --color-accent-200: #fecdd3;
+  --color-accent-300: #fda4af;
+  --color-accent-400: #fb7185;
+  --color-accent-500: #f43f5e;
+  --color-accent-600: #e11d48;
+  --color-accent-700: #be123c;
+  --color-accent-800: #9f1239;
+  --color-accent-900: #881337;
+  --color-accent-950: #4c0519;
+  
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: "Outfit", serif;
+
+  --shadow-premium: 0 20px 50px rgba(0, 0, 0, 0.05);
+  --shadow-premium-hover: 0 40px 80px rgba(0, 0, 0, 0.1);
+}
+
+:root {
+  background-color: #ffffff;
+  color: #0f172a;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar - Modern Slim */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #026fc5;
+}
+
+/* Base Styles */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-bold tracking-tight text-slate-900;
+  }
+}
+
+/* Modern Utilities */
+.glass {
+  @apply bg-white/60 backdrop-blur-xl border border-white/40 shadow-premium;
+}
+
+.glass-dark {
+  @apply bg-slate-900/80 backdrop-blur-xl border border-slate-700/30 shadow-2xl;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-accent-500;
+}
+
+.bg-mesh {
+  background-color: #ffffff;
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(204,100%,93%,1) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, hsla(215,100%,97%,1) 0, transparent 50%), 
+    radial-gradient(at 100% 0%, hsla(353,100%,96%,1) 0, transparent 50%);
+}
+
+.card-premium {
+  @apply bg-white p-8 rounded-[2rem] border border-slate-100 shadow-premium transition-all duration-500 hover:shadow-premium-hover hover:-translate-y-2;
+}
+
+/* Animations */
+@keyframes slow-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.1); opacity: 0.5; }
+}
+
+.animate-slow-pulse {
+  animation: slow-pulse 8s infinite ease-in-out;
+}
+
+.transition-premium {
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+

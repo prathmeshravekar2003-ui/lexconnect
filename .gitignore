@@ -1,22 +1,60 @@
-# Dependencies
+# ===== Dependencies =====
 node_modules/
+package-lock.json
 
-# Environment files
+# ===== Environment Variables =====
 .env
 .env.local
+.env.development
 .env.production
+.env.staging
+.env*.local
 
-# Logs
+# ===== Build Outputs =====
+dist/
+build/
+.vite/
+
+# ===== Logs =====
 *.log
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# OS files
+# ===== OS Files =====
 .DS_Store
+.DS_Store?
 Thumbs.db
+ehthumbs.db
+Desktop.ini
+._*
 
-# IDE
+# ===== IDE / Editors =====
 .vscode/
 .idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+.project
+.settings/
 
-# Uploads
+# ===== Backend =====
 backend/uploads/
+
+# ===== Frontend =====
+frontend/.eslintcache
+frontend/coverage/
+*.local
+
+# ===== Testing =====
+coverage/
+.nyc_output/
+
+# ===== Misc =====
+*.tgz
+.cache/
+.temp/
+.tmp/

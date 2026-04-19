@@ -1,0 +1,40 @@
+.chat-window {
+  width: 400px;
+  max-width: calc(100vw - 48px);
+  height: 600px;
+  max-height: calc(100vh - 120px);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 2rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom scrollbar for chat messages */
+.chat-window .overflow-y-auto::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chat-window .overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-window .overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+
+.chat-window .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
+/* Mobile adjustments */
+@media (max-width: 640px) {
+  .chat-window {
+    width: 100%;
+    right: 24px;
+    bottom: 80px;
+    height: 500px;
+  }
+}

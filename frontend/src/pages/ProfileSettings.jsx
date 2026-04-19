@@ -116,7 +116,7 @@ const ProfileSettings = () => {
   if (fetching) return <div className="min-h-screen flex items-center justify-center">Loading your profile...</div>;
 
   return (
-    <div className="bg-slate-50 min-h-screen py-12 px-4">
+    <div className="bg-slate-50 min-h-screen pt-32 pb-12 px-4">
       <div className="max-w-4xl mx-auto">
         <button 
           onClick={() => navigate('/dashboard')}

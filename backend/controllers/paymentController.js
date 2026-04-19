@@ -5,9 +5,14 @@ const Consultation = require('../models/Consultation');
 const LawyerProfile = require('../models/LawyerProfile');
 
 const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET
+  key_id: process.env.RAZORPAY_KEY_ID || '',
+  key_secret: process.env.RAZORPAY_KEY_SECRET || ''
 });
+
+// Check if keys are loaded
+if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+  console.error('❌ RAZORPAY ERROR: Keys are missing in .env');
+}
 
 // @desc    Create Razorpay order
 // @route   POST /api/payments/create-order
@@ -24,16 +29,22 @@ exports.createOrder = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Already paid' });
     }
 
+    if (!consultation.fee || consultation.fee <= 0) {
+      return res.status(400).json({ success: false, message: 'Invalid consultation fee' });
+    }
+
     const options = {
-      amount: consultation.fee * 100, // Razorpay expects amount in paise
+      amount: Math.round(consultation.fee * 100), // Ensure it's an integer in paise
       currency: 'INR',
       receipt: `consultation_${consultationId}`,
       notes: {
         consultationId: consultationId.toString(),
         clientId: req.user.id,
-        lawyerId: consultation.lawyer.toString()
+        lawyerId: consultation.lawyer ? consultation.lawyer.toString() : ''
       }
     };
+
+    console.log('📡 Creating Razorpay order with options:', JSON.stringify(options));
 
     const order = await razorpay.orders.create(options);
 
@@ -53,7 +64,12 @@ exports.createOrder = async (req, res) => {
       key: process.env.RAZORPAY_KEY_ID
     });
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    console.error('❌ RAZORPAY ORDER ERROR:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: error.message || 'Payment initiation failed',
+      details: process.env.NODE_ENV === 'development' ? error : undefined
+    });
   }
 };
 

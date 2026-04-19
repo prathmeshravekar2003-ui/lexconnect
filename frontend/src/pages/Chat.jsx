@@ -197,8 +197,8 @@ const Chat = () => {
   const partner = user.role === 'client' ? consultation.lawyer : consultation.client;
 
   return (
-    <div className="bg-slate-50 h-[calc(100vh-64px)] flex flex-col md:p-6">
-      <div className="flex-grow flex flex-col md:flex-row max-w-7xl mx-auto w-full gap-6 bg-white md:rounded-3xl shadow-2xl overflow-hidden border border-slate-100">
+    <div className="bg-slate-50 min-h-screen flex flex-col pt-24 md:pt-28 md:p-6 pb-0">
+      <div className="flex-grow flex flex-col md:flex-row max-w-7xl mx-auto w-full gap-6 bg-white md:rounded-3xl shadow-2xl overflow-hidden border border-slate-100 mb-6 h-[calc(100vh-140px)]">
         
         {/* Chat Main Area */}
         <div className="flex-grow flex flex-col h-full relative">

@@ -41,7 +41,7 @@ const LawyerProfile = () => {
   if (!lawyer) return <div className="text-center py-20 bg-slate-50 min-h-screen">Lawyer not found</div>;
 
   return (
-    <div className="bg-slate-50 min-h-screen pb-20">
+    <div className="bg-slate-50 min-h-screen pt-20 pb-20">
       {/* Profile Header Background */}
       <div className="h-80 bg-slate-900 relative">
         <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-accent-600/20"></div>

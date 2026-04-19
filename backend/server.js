@@ -8,7 +8,21 @@ const connectDB = require('./config/db');
 const setupSocket = require('./socket/socketHandler');
 
 // Load env vars
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, '.env') });
+
+// Verify critical environment variables
+const requiredEnvVars = [
+  'MONGODB_URI',
+  'JWT_SECRET',
+  'RAZORPAY_KEY_ID',
+  'RAZORPAY_KEY_SECRET'
+];
+
+requiredEnvVars.forEach(varName => {
+  if (!process.env[varName]) {
+    console.error(`❌ CRITICAL ERROR: Missing environment variable ${varName} in .env file`);
+  }
+});
 
 // Connect to DB
 connectDB();
@@ -74,6 +88,7 @@ app.use('/api/reviews', require('./routes/reviewRoutes'));
 app.use('/api/payments', require('./routes/paymentRoutes'));
 app.use('/api/chat', require('./routes/chatRoutes'));
 app.use('/api/documents', require('./routes/documentRoutes'));
+app.use('/api/ai', require('./routes/aiRoutes'));
 
 // Health check
 app.get('/api/health', (req, res) => {

@@ -85,7 +85,7 @@ const Booking = () => {
   if (!lawyer) return null;
 
   return (
-    <div className="bg-slate-50 min-h-screen py-12 px-4">
+    <div className="bg-slate-50 min-h-screen pt-32 pb-12 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
           <h1 className="text-3xl font-bold font-serif mb-2">Book Your Consultation</h1>

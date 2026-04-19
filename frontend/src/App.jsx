@@ -6,6 +6,7 @@ import useAuthStore from './store/authStore';
 // Layouts
 const Navbar = lazy(() => import('./components/Navbar'));
 const Footer = lazy(() => import('./components/Footer'));
+const ChatBot = lazy(() => import('./components/ChatBot'));
 
 // Pages
 const Home = lazy(() => import('./pages/Home'));
@@ -96,6 +97,9 @@ function App() {
         </main>
         
         <Footer />
+        <Suspense fallback={null}>
+          <ChatBot />
+        </Suspense>
       </div>
     </Router>
   );
